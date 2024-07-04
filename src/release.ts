@@ -4,12 +4,37 @@ import { simpleGit } from "simple-git";
 import * as log from "./log.ts";
 import { assert, prompt } from "./util.ts";
 
+/**
+ * Parameters for the release function
+ */
 export type ReleaseParams = {
+  /**
+   * Skip all write operations
+   */
   dryRun?: boolean;
+  /**
+   * Version to release. If not provided, will prompt for input.
+   */
   releaseVersion?: string;
+  /**
+   * Version to bump to after release. If not provided, will prompt for input.
+   */
   postReleaseVersion?: string;
+  /**
+   * Enable confirmation prompts
+   */
   enableConfirm?: boolean;
+  /**
+   * Allow dirty Git working directory
+   */
   allowDirty?: boolean;
+  /**
+   * Git tag prefix
+   *
+   * Examples:
+   * - `v` for `v1.0.0`
+   * - `release/` for `release/1.0.0`
+   */
   gitTagPrefix: string;
 };
 
