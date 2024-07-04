@@ -1,0 +1,19 @@
+{
+  "name": "@andyb/git-release",
+  "version": "0.0.0-dev.0",
+  "exports": "./src/mod.ts",
+  "tasks": {
+    "dev": "deno run --allow-env --allow-read --allow-write=. --allow-run=git ./src/mod.ts",
+    "typecheck": "deno check src/**/*.ts",
+    "update": "deno cache --lock-write src/**/*.ts"
+  },
+  "imports": {
+    "@std/jsonc": "jsr:@std/jsonc@^0.224.3",
+    "@std/semver": "jsr:@std/semver@^0.224.3",
+    "cmd-ts": "npm:cmd-ts@^0.13.0",
+    "simple-git": "npm:simple-git@^3.25.0"
+  },
+  "publish": {
+    "include": ["src/**/*", "README.md", "LICENSE.md"]
+  }
+}

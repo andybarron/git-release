@@ -1,0 +1,37 @@
+name: Continuous integration
+
+on:
+  push:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+    env:
+      DENO_DIR: /home/runner/deno_ci_cache
+    steps:
+      - uses: actions/checkout@v4
+      - name: Cache Deno dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.DENO_DIR }}
+          key: ${{ hashFiles('deno.lock') }}
+          save-always: true
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: vx.x.x
+      - name: Check code style
+        run: deno fmt --check
+      - name: Lint code
+        run: deno lint
+      - name: Typecheck
+        run: deno task typecheck
+      # - name: Run tests
+      #   run: deno test --coverage
+      # - name: Generate coverage report
+      #   run: deno coverage --lcov > coverage/report.lcov
+      # - name: Upload coverage report
+      #   uses: codecov/codecov-action@v4
+      #   with:
+      #     use_oidc: true
