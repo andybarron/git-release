@@ -3,7 +3,7 @@
   "version": "0.0.0-dev.0",
   "exports": "./src/mod.ts",
   "tasks": {
-    "dev": "deno run --allow-env --allow-read --allow-write=. --allow-run=git ./src/mod.ts",
+    "release": "deno run --allow-env --allow-read --allow-write=. --allow-run=git ./src/mod.ts",
     "typecheck": "deno check src/**/*.ts",
     "update": "deno cache --lock-write src/**/*.ts"
   },
