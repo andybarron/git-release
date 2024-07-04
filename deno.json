@@ -1,6 +1,6 @@
 {
   "name": "@andyb/git-release",
-  "version": "0.0.1",
+  "version": "0.0.2-dev.0",
   "exports": "./src/mod.ts",
   "tasks": {
     "release": "deno run --allow-env --allow-read --allow-write=. --allow-run=git ./src/mod.ts",
